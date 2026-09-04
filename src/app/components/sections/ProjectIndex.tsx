@@ -1,222 +1,31 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { projects } from "../../data/projects";
 
-// --- Project Specific Visuals ---
+import wtBooksImg from "../../../assets/images/Selected Works/WT Books.png";
+import gtColorMixerImg from "../../../assets/images/Selected Works/GT Color Mixer.png";
+import xionImg from "../../../assets/images/Selected Works/XION.png";
+import superIdImg from "../../../assets/images/Selected Works/Super_ID_Card_Maker.png";
+import hoverPreviewImg from "../../../assets/images/Selected Works/hover_to_view_image.png";
 
-const WTBooksPreview = ({ project }: { project: any }) => (
-  <div className="relative w-full h-full bg-[#f4ece3] overflow-hidden rounded-3xl border border-black/5 shadow-inner">
-    <div className="absolute inset-0 z-0">
-      <img src={project.cover} alt="WT Books" className="w-full h-full object-cover opacity-30" />
-    </div>
-    
-    <div className="relative z-10 w-full h-full flex items-center justify-center p-8">
-      <motion.div 
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="w-[280px] h-[380px] bg-white rounded-r-2xl rounded-l-sm shadow-2xl border-l-4 border-[#CF4A25] relative overflow-hidden p-6 flex flex-col justify-between"
-      >
-        <div className="absolute inset-0 bg-gradient-to-tr from-[#CF4A25]/5 to-transparent pointer-events-none" />
-        
-        <div>
-          <motion.div 
-            initial={{ width: "0%" }}
-            animate={{ width: "30%" }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="h-1 bg-[#1B1712] mb-6" 
-          />
-          <h4 className="font-serif text-3xl text-[#1B1712] leading-tight mb-2">The Art of<br/>Editorial.</h4>
-          <p className="font-mono text-[10px] text-[#7D7365] uppercase tracking-widest">Chapter 01</p>
-        </div>
-
-        <div className="flex justify-between items-end">
-          <div className="w-12 h-16 bg-[#f4ece3] rounded-sm" />
-          <div className="w-8 h-8 rounded-full border border-[#CF4A25] flex items-center justify-center">
-            <span className="text-[10px] text-[#CF4A25]">+</span>
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  </div>
-);
-
-const GTColourPreview = ({ project }: { project: any }) => (
-  <div className="relative w-full h-full bg-[#F5F5F7] overflow-hidden rounded-3xl border border-black/5 shadow-inner">
-    <div className="absolute inset-0 z-0">
-      <img src={project.cover} alt="GT Colour Mixer" className="w-full h-full object-cover opacity-20 grayscale" />
-    </div>
-
-    <div className="relative z-10 w-full h-full flex items-center justify-center p-8">
-      <motion.div 
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.6, type: "spring" }}
-        className="w-[300px] h-[400px] bg-white rounded-[32px] shadow-2xl border border-black/5 p-4 flex flex-col gap-4"
-      >
-        <div className="w-full aspect-square rounded-[24px] bg-slate-100 relative overflow-hidden">
-          <motion.div 
-            animate={{ 
-              background: [
-                "linear-gradient(45deg, #FF6B6B, #4ECDC4)",
-                "linear-gradient(45deg, #4ECDC4, #FFE66D)",
-                "linear-gradient(45deg, #FFE66D, #FF6B6B)"
-              ]
-            }}
-            transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 opacity-80"
-          />
-          <div className="absolute inset-0 shadow-[inset_0_4px_20px_rgba(0,0,0,0.1)] rounded-[24px]" />
-        </div>
-
-        <div className="flex justify-between items-center px-2 pt-2">
-          <div className="flex gap-2">
-            <div className="w-8 h-8 rounded-full bg-[#FF6B6B] shadow-sm" />
-            <div className="w-8 h-8 rounded-full bg-[#4ECDC4] shadow-sm" />
-            <div className="w-8 h-8 rounded-full bg-[#FFE66D] shadow-sm" />
-          </div>
-          <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center">
-            <div className="w-4 h-4 rounded-full bg-black/10" />
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  </div>
-);
-
-const XionPreview = ({ project }: { project: any }) => (
-  <div className="relative w-full h-full bg-[#F4F3ED] overflow-hidden rounded-3xl border border-black/5 shadow-inner">
-    <div className="absolute inset-0 z-0">
-      <img src={project.cover} alt="XION" className="w-full h-full object-cover opacity-30" />
-    </div>
-
-    <div className="relative z-10 w-full h-full flex items-center justify-center">
-      <motion.div 
-        initial={{ y: 40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, type: "spring", bounce: 0.3 }}
-        className="w-[240px] h-[480px] bg-white rounded-[40px] shadow-2xl border-4 border-[#071709] relative overflow-hidden flex flex-col"
-      >
-        <div className="w-24 h-6 bg-[#071709] absolute top-0 left-1/2 -translate-x-1/2 rounded-b-[16px] z-20" />
-        
-        <div className="flex-1 bg-slate-50 pt-12 px-4 flex flex-col gap-4">
-          <div className="flex justify-between items-center mb-2">
-            <div className="w-20 h-4 bg-[#1A5C38]/20 rounded-full" />
-            <div className="w-8 h-8 rounded-full bg-[#5EB547]/20" />
-          </div>
-          
-          <div className="w-full h-32 rounded-xl bg-[#5EB547]/10 flex items-center justify-center relative overflow-hidden">
-             <motion.div 
-                initial={{ x: "100%" }}
-                animate={{ x: "-100%" }}
-                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                className="absolute w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12"
-             />
-          </div>
-
-          <div className="grid grid-cols-2 gap-3">
-            {[1, 2, 3, 4].map(i => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}
-                className="bg-white p-3 rounded-lg shadow-sm flex flex-col gap-2"
-              >
-                <div className="w-full aspect-square bg-slate-100 rounded-md" />
-                <div className="w-1/2 h-2 bg-slate-200 rounded-full" />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  </div>
-);
-
-const SuperIDPreview = ({ project }: { project: any }) => (
-  <div className="relative w-full h-full bg-[#F8F8F8] overflow-hidden rounded-3xl border border-black/5 shadow-inner">
-    <div className="absolute inset-0 z-0">
-      <img src={project.cover} alt="Super ID Card Maker" className="w-full h-full object-cover opacity-20 grayscale" />
-    </div>
-
-    <div className="relative z-10 w-full h-full flex items-center justify-center p-8">
-      <motion.div 
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="w-full max-w-[400px] bg-white rounded-xl shadow-2xl border border-black/10 flex flex-col overflow-hidden"
-      >
-        <div className="h-10 bg-slate-100 border-b border-black/5 flex items-center px-4 gap-2">
-          <div className="w-3 h-3 rounded-full bg-red-400" />
-          <div className="w-3 h-3 rounded-full bg-amber-400" />
-          <div className="w-3 h-3 rounded-full bg-green-400" />
-        </div>
-        
-        <div className="p-6 flex gap-6">
-          <div className="w-[120px] shrink-0 flex flex-col gap-3">
-            <div className="w-full h-32 border-2 border-dashed border-slate-200 rounded-lg flex items-center justify-center bg-slate-50">
-              <div className="w-16 h-20 bg-white shadow-sm border border-slate-200 flex flex-col items-center pt-2 gap-1">
-                <div className="w-6 h-6 rounded-full bg-slate-200" />
-                <div className="w-10 h-1 bg-slate-200" />
-                <div className="w-8 h-1 bg-slate-200" />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex-1 flex flex-col gap-3">
-            {[1, 2, 3, 4, 5].map((row, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 + i * 0.05 }}
-                className="flex items-center gap-3 border-b border-slate-100 pb-2"
-              >
-                <div className="w-4 h-4 rounded-sm border border-slate-300" />
-                <div className="w-1/3 h-2 bg-slate-200 rounded-full" />
-                <div className="w-1/2 h-2 bg-slate-100 rounded-full" />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  </div>
-);
-
-// Fallback preview for projects without custom components
-const DefaultPreview = ({ project }: { project: any }) => (
-  <div className="relative w-full h-full bg-slate-100 overflow-hidden rounded-3xl border border-black/5 shadow-inner">
-    <img src={project.cover} alt={project.title} className="w-full h-full object-cover" />
-    <div className="absolute inset-0 bg-black/10" />
-  </div>
-);
-
-// --- MAIN COMPONENT ---
+const projectPreviewImages: Record<string, string> = {
+  "wt-books": wtBooksImg,
+  "gt-colour-mixer": gtColorMixerImg,
+  "xion-grocery": xionImg,
+  "super-id-card-maker": superIdImg,
+};
 
 export function ProjectIndex() {
   const [active, setActive] = useState<number | null>(null);
 
   const displayProjects = projects.slice(0, 4);
 
-  // Map project ID to its custom visual component
-  const getPreviewComponent = (project: any) => {
-    switch(project.id) {
-      case 'wt-books': return <WTBooksPreview project={project} />;
-      case 'gt-colour-mixer': return <GTColourPreview project={project} />;
-      case 'xion-grocery': return <XionPreview project={project} />;
-      case 'super-id-card-maker': return <SuperIDPreview project={project} />;
-      default: return <DefaultPreview project={project} />;
-    }
-  };
-
   return (
     <div className="relative">
       
       {/* Desktop Split Layout */}
-      <div className="hidden lg:grid grid-cols-[1.1fr_0.9fr] gap-16 min-h-[600px]">
+      <div className="hidden lg:grid grid-cols-[1.1fr_0.9fr] gap-16 min-h-[600px] items-center">
         
         {/* Left: Project List */}
         <div className="flex flex-col justify-center">
@@ -269,34 +78,49 @@ export function ProjectIndex() {
         </div>
 
         {/* Right: Sticky Preview Area */}
-        <div className="relative">
-          <div className="sticky top-32 w-full h-[540px] rounded-3xl overflow-hidden flex items-center justify-center">
-            {active === null ? (
-              // Empty state placeholder
-              <div className="w-full h-full bg-foreground/[0.02] border border-border/40 rounded-3xl flex items-center justify-center">
-                <span className="font-mono-jb text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground/40">
-                  Hover to preview
-                </span>
-              </div>
-            ) : (
-              <AnimatePresence mode="wait">
+        <div className="relative flex items-center justify-center">
+          <div className="sticky top-32 w-full max-w-[540px] aspect-[606/541] rounded-3xl overflow-hidden border border-border/40 shadow-xl bg-card/20">
+            <AnimatePresence mode="wait">
+              {active === null ? (
+                // Empty state with hover_to_view_image.png
                 <motion.div
-                  key={active}
-                  initial={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
-                  animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, scale: 1.02, filter: "blur(4px)" }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="absolute inset-0"
+                  key="hover-placeholder"
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.02 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  className="w-full h-full"
                 >
-                  {getPreviewComponent(displayProjects[active])}
+                  <img
+                    src={hoverPreviewImg}
+                    alt="Hover to preview"
+                    className="w-full h-full object-cover rounded-3xl"
+                  />
                 </motion.div>
-              </AnimatePresence>
-            )}
+              ) : (
+                <motion.div
+                  key={displayProjects[active].id}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.02 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  className="w-full h-full"
+                >
+                  <Link to={`/projects/${displayProjects[active].id}`} className="block w-full h-full">
+                    <img
+                      src={projectPreviewImages[displayProjects[active].id] || displayProjects[active].cover}
+                      alt={displayProjects[active].title}
+                      className="w-full h-full object-cover rounded-3xl"
+                    />
+                  </Link>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </div>
 
-      {/* Mobile Stacked Layout (Fallback for no hover) */}
+      {/* Mobile Stacked Layout */}
       <div className="lg:hidden flex flex-col">
         {displayProjects.map((p, i) => (
           <div key={p.id} className="flex flex-col border-t border-border/60 py-8">
@@ -324,9 +148,13 @@ export function ProjectIndex() {
             </Link>
             
             {/* Always visible preview on mobile */}
-            <div className="w-full h-[320px] rounded-2xl overflow-hidden relative border border-border/40">
-              {getPreviewComponent(p)}
-            </div>
+            <Link to={`/projects/${p.id}`} className="w-full aspect-[606/541] rounded-2xl overflow-hidden relative border border-border/40 shadow-md block">
+              <img
+                src={projectPreviewImages[p.id] || p.cover}
+                alt={p.title}
+                className="w-full h-full object-cover rounded-2xl"
+              />
+            </Link>
           </div>
         ))}
       </div>

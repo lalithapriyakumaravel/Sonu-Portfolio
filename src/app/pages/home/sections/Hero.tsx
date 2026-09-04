@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowDownRight, Asterisk } from "lucide-react";
 import { Reveal, WordReveal, Magnetic } from "../../../components/ui/motion-primitives";
 import { ImageWithFallback } from "../../../components/ui/ImageWithFallback";
+const bannerImg = new URL("../../../../assets/images/banner image.png", import.meta.url).href;
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -48,11 +49,11 @@ export function Hero() {
         </motion.div>
 
         <motion.div style={{ y: yPortrait }} className="relative mx-auto w-full max-w-[260px] lg:max-w-none">
-          <div className="overflow-hidden rounded-[1.5rem] bg-secondary">
+          <div className="overflow-hidden rounded-[1.5rem] bg-secondary flex items-center justify-center p-2">
             <ImageWithFallback
-              src="https://images.unsplash.com/photo-1680775823094-da1d3b09299d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800"
+              src={bannerImg}
               alt="Lalithapriya K, UI/UX designer"
-              className="aspect-[3/4] w-full object-cover"
+              className="aspect-[3/4] w-full object-contain"
             />
           </div>
           <div className="absolute -left-3 -top-3 flex h-14 w-14 rotate-[-8deg] items-center justify-center rounded-full bg-primary text-primary-foreground">

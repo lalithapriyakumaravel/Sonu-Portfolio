@@ -1,3 +1,10 @@
+import gallery1 from "../../assets/images/Gallery Images/Gallery Image 1.png";
+import gallery2 from "../../assets/images/Gallery Images/Gallery Image 2.png";
+import gallery3 from "../../assets/images/Gallery Images/Gallery Image 3.png";
+import gallery4 from "../../assets/images/Gallery Images/Gallery Image 4.png";
+import gallery5 from "../../assets/images/Gallery Images/Gallery Image 5.png";
+import gallery6 from "../../assets/images/Gallery Images/Gallery Image 6.png";
+
 export interface Sketch {
   id: string;
   title: string;
@@ -9,57 +16,51 @@ export interface Sketch {
 
 export const sketches: Sketch[] = [
   {
-    id: "gaze",
-    title: "Gaze, no. 4",
+    id: "drawing-1",
+    title: "Sketch Study 01",
     medium: "Graphite on paper",
-    year: "2023",
-    image:
-      "https://images.unsplash.com/photo-1612641605722-60c66c66530c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    year: "2024",
+    image: gallery1,
     ratio: "tall",
   },
   {
-    id: "wren",
-    title: "Wren study",
+    id: "drawing-2",
+    title: "Sketch Study 02",
+    medium: "Pencil & Ink",
+    year: "2024",
+    image: gallery2,
+    ratio: "tall",
+  },
+  {
+    id: "drawing-3",
+    title: "Sketch Study 03",
+    medium: "Charcoal & Graphite",
+    year: "2024",
+    image: gallery3,
+    ratio: "tall",
+  },
+  {
+    id: "drawing-4",
+    title: "Sketch Study 04",
+    medium: "Pencil on paper",
+    year: "2024",
+    image: gallery4,
+    ratio: "tall",
+  },
+  {
+    id: "drawing-5",
+    title: "Sketch Study 05",
     medium: "Ink & wash",
-    year: "2022",
-    image:
-      "https://images.unsplash.com/photo-1605007622549-018572089f27?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
-    ratio: "tall",
-  },
-  {
-    id: "profile",
-    title: "Profile in pencil",
-    medium: "Charcoal",
-    year: "2023",
-    image:
-      "https://images.unsplash.com/photo-1616898297271-47896b4daaf1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
-    ratio: "tall",
-  },
-  {
-    id: "sitting",
-    title: "The sitting",
-    medium: "Graphite",
-    year: "2021",
-    image:
-      "https://images.unsplash.com/photo-1569154076682-4c0466623ec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900",
-    ratio: "wide",
-  },
-  {
-    id: "notes",
-    title: "Pillow notes",
-    medium: "Pen on paper",
     year: "2024",
-    image:
-      "https://images.unsplash.com/photo-1742130847739-f7728ae50176?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+    image: gallery5,
     ratio: "tall",
   },
   {
-    id: "abstract",
-    title: "Faint abstractions",
-    medium: "Graphite on kraft",
+    id: "drawing-6",
+    title: "Sketch Study 06",
+    medium: "Graphite on paper",
     year: "2024",
-    image:
-      "https://images.unsplash.com/photo-1782879429032-8bb03f691b8e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1000",
-    ratio: "wide",
+    image: gallery6,
+    ratio: "tall",
   },
 ];

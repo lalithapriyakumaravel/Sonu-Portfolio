@@ -5,7 +5,8 @@ import { PhoneMockup, UIType } from "./PhoneMockup";
 export interface LowFidelityStep {
   title: string;
   description: React.ReactNode;
-  uiType: UIType;
+  uiType?: UIType;
+  image?: string;
 }
 
 interface LowFidelitySectionProps {
@@ -52,7 +53,7 @@ export function LowFidelitySection({
                 </div>
               </div>
               <div className="mt-4 w-full flex justify-center lg:justify-start lg:pl-2">
-                <PhoneMockup uiType={step.uiType} />
+                <PhoneMockup uiType={step.uiType} image={step.image} title={step.title} />
               </div>
             </div>
           </Reveal>

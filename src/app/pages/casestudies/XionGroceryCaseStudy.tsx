@@ -1,24 +1,33 @@
+import { motion } from "motion/react";
 import { Reveal } from "../../components/ui/motion-primitives";
-import person1Img from "../../../assets/images/persona/person1.png";
-import person2Img from "../../../assets/images/persona/person2.png";
 import vectorLine from "../../../assets/images/persona/vector_Line.png";
 import { LowFidelitySection } from "../../components/ui/LowFidelitySection";
 import { Project } from "../../data/projects";
 import { ImageWithFallback } from "../../components/ui/ImageWithFallback";
 
-// Import images (Using existing ones as placeholders for the layout)
-import bannerImg from "../../../assets/images/wtbooks/Banner.png";
-import userFlowImg from "../../../assets/images/wtbooks/User Flow Diagram.png";
-import screen1 from "../../../assets/images/wtbooks/Add Transaction (Cash-In) 1.png";
-import screen2 from "../../../assets/images/wtbooks/Business Detail 1.png";
-import screen3 from "../../../assets/images/wtbooks/Business List 1.png";
+// Import XION Mobile App images
+import bannerImg from "../../../assets/images/Mobile App Images/XION/XION Banner Image.png";
+import userFlowImg from "../../../assets/images/Mobile App Images/XION/XION - User Flow Diagram.png";
+import person1Img from "../../../assets/images/Mobile App Images/XION/Sara - User Persona.png";
+import person2Img from "../../../assets/images/Mobile App Images/XION/Faisal - User Persona.png";
+
+// LoFi Screens
+import lofiReviewOrder from "../../../assets/images/Mobile App Images/XION/Review Your Order - LoFi Screen.png";
+import lofiWork from "../../../assets/images/Mobile App Images/XION/My Work - LoFi Screen.png";
+import lofiProfile from "../../../assets/images/Mobile App Images/XION/Profile - LoFi Screen.png";
+
+// HiFi Screens
+import hifi1 from "../../../assets/images/Mobile App Images/XION/XION -HiFi Screen 01.png";
+import hifi2 from "../../../assets/images/Mobile App Images/XION/XION -HiFi Screen 02.png";
+import hifi3 from "../../../assets/images/Mobile App Images/XION/XION -HiFi Screen 03.png";
+import hifi4 from "../../../assets/images/Mobile App Images/XION/XION -HiFi Screen 04.png";
+import hifi5 from "../../../assets/images/Mobile App Images/XION/XION -HiFi Screen 05.png";
+import hifi6 from "../../../assets/images/Mobile App Images/XION/XION -HiFi Screen 06.png";
+import hifi7 from "../../../assets/images/Mobile App Images/XION/XION -HiFi Screen 07.png";
+
 import cashbookImg from "../../../assets/images/wtbooks/cashbook_compettitve_analysis.png";
 import wtbooksCompetitiveImg from "../../../assets/images/wtbooks/wtbooks_competitive_analysis.png";
 import keyFindingsImg from "../../../assets/images/wtbooks/key_findings.png";
-import lofiLineImg from "../../../assets/images/wtbooks/lofi-vector-line.png";
-import lofiWire1 from "../../../assets/images/wtbooks/lofi-wireframe1.png";
-import lofiWire2 from "../../../assets/images/wtbooks/lofi-wireframe2.png";
-import lofiWire3 from "../../../assets/images/wtbooks/lofi-wireframe3.png";
 
 export function XionGroceryCaseStudy({ project }: { project: Project }) {
   const primaryColor = "#5EB547"; // Main brand accent for XION
@@ -27,35 +36,47 @@ export function XionGroceryCaseStudy({ project }: { project: Project }) {
   return (
     <div className="bg-[#F1ECE2] dark:bg-background w-full min-h-screen text-[#5E5E5E] dark:text-muted-foreground font-['Jost'] pb-32 pt-24">
       {/* 1. Hero Banner */}
-      <section className="px-5 mx-auto max-w-[1920px]">
-        <div className="relative w-full h-[600px] lg:h-[800px] rounded-[10px] overflow-hidden flex flex-col items-center justify-center bg-black">
-          <ImageWithFallback 
-            src={bannerImg} 
-            alt="XION Banner" 
-            className="absolute inset-0 w-full h-full object-cover opacity-80"
-          />
-          
-          <Reveal>
-            <h1 className="font-['Jost'] font-extrabold text-[clamp(60px,12vw,200px)] leading-none text-center uppercase text-white relative z-10 tracking-tight drop-shadow-[0px_4px_20px_rgba(0,0,0,0.5)]">
-              {project.title}
-            </h1>
-          </Reveal>
+      <section className="px-4 sm:px-6 mx-auto max-w-[1880px] mb-20 sm:mb-28 md:mb-32">
+        <div className="relative w-full h-[480px] sm:h-[580px] md:h-[680px] lg:h-[760px] rounded-[24px] md:rounded-[36px] bg-[#070B14] border border-white/10 shadow-2xl flex flex-col items-center">
+          {/* Ambient Glows */}
+          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-[24px] md:rounded-[36px]">
+            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] max-w-[900px] h-[450px] rounded-full bg-[#5EB547]/25 blur-[120px] opacity-70" />
+            <div className="absolute -top-20 -left-20 w-[40vw] max-w-[500px] h-[400px] rounded-full bg-[#5EB547]/15 blur-[100px]" />
+          </div>
 
-          <Reveal delay={0.2} className="absolute top-[55px] left-1/2 -translate-x-1/2 z-10">
-            <div className="bg-black/30 rounded-full px-8 py-2.5 backdrop-blur-md z-10 border border-white/20">
-              <span className="text-white text-[18px] whitespace-nowrap">
-                {project.category} · {project.tags.join(" · ")}
+          {/* Top Badge */}
+          <Reveal delay={0.1} className="relative z-10 mt-6 sm:mt-8 md:mt-10">
+            <div className="rounded-full border border-white/20 bg-white/10 px-5 sm:px-8 py-1.5 sm:py-2.5 backdrop-blur-md shadow-lg">
+              <span className="font-['Jost'] text-xs sm:text-sm font-medium uppercase tracking-[0.18em] text-white/90">
+                Mobile application · UX Research · Prototyping
               </span>
             </div>
           </Reveal>
 
-          <Reveal delay={0.3} className="absolute left-[30px] bottom-[30px] z-10">
-            <div className="bg-black/30 rounded-full px-8 py-4 backdrop-blur-md z-10 border border-white/20">
-              <span className="text-white font-semibold text-[22px]">
-                On-Demand Grocery Delivery
-              </span>
-            </div>
-          </Reveal>
+          {/* Large Background Title (Behind Phone - iOS Wallpaper Depth Effect) */}
+          <div className="absolute top-[16%] sm:top-[18%] md:top-[20%] inset-x-0 text-center z-10 select-none pointer-events-none px-4">
+            <Reveal delay={0.15}>
+              <h1 className="font-['Jost'] font-black text-[clamp(3.5rem,10.5vw,10.5rem)] leading-none uppercase text-white tracking-wider drop-shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
+                XION
+              </h1>
+            </Reveal>
+          </div>
+
+          {/* Foreground Phone Overlay (Overlaying text like iOS lockscreen depth effect) */}
+          <div className="absolute top-[26%] sm:top-[24%] md:top-[22%] inset-x-0 z-20 flex justify-center pointer-events-none px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="w-full max-w-[520px] sm:max-w-[700px] md:max-w-[880px] lg:max-w-[1040px] flex justify-center"
+            >
+              <img 
+                src={bannerImg} 
+                alt="XION Mockup" 
+                className="w-full h-auto object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.6)]"
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -63,7 +84,7 @@ export function XionGroceryCaseStudy({ project }: { project: Project }) {
       <div className="mx-auto max-w-[1400px] px-6 lg:px-0">
         
         {/* 2. Project Overview */}
-        <section className="mt-32">
+        <section className="mt-20 sm:mt-24">
           <Reveal>
             <h2 className="font-['Fraunces'] font-semibold text-[40px] leading-tight mb-6 text-[#CF4A25]">
               Project Overview
@@ -358,17 +379,20 @@ export function XionGroceryCaseStudy({ project }: { project: Project }) {
             {
               title: "Home Screen",
               description: "Category-first browsing structure up top, with active offers/promotions surfaced early — designed for fast, familiar grocery-app scanning similar to Blinkit's category-grid pattern.",
-              uiType: "discovery"
+              uiType: "discovery",
+              image: lofiWork
             },
             {
               title: "Review Your Order Screen",
               description: "Cart contents grouped clearly, with delivery time selection surfaced directly on this screen (not a separate buried step) so users confirm both what and when together before checkout.",
-              uiType: "detail"
+              uiType: "detail",
+              image: lofiReviewOrder
             },
             {
               title: "Profile Screen",
               description: "Order history, saved addresses, and delivery preferences consolidated in one place, supporting repeat users who reorder frequently.",
-              uiType: "detail"
+              uiType: "detail",
+              image: lofiProfile
             }
           ]}
         />
@@ -462,11 +486,11 @@ export function XionGroceryCaseStudy({ project }: { project: Project }) {
             </h2>
           </Reveal>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {[screen1, screen2, screen3].map((img, i) => (
-              <Reveal delay={i * 0.1} key={i}>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            {[hifi1, hifi2, hifi3, hifi4, hifi5, hifi6, hifi7].map((img, i) => (
+              <Reveal delay={i * 0.08} key={i}>
                 <div className="w-full flex justify-center drop-shadow-xl hover:-translate-y-2 transition-transform duration-500">
-                  <ImageWithFallback src={img} alt={`XION Screen ${i + 1}`} className="w-full max-w-[400px] h-auto object-contain rounded-[30px]" />
+                  <ImageWithFallback src={img} alt={`XION Screen ${i + 1}`} className="w-full h-auto object-contain rounded-[24px]" />
                 </div>
               </Reveal>
             ))}

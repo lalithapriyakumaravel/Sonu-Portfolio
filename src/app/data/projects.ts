@@ -1,5 +1,10 @@
 
 
+import wtBooksCover from "../../assets/images/Selected Works/WT Books.png";
+import gtColourMixerCover from "../../assets/images/Selected Works/GT Color Mixer.png";
+import xionCover from "../../assets/images/Selected Works/XION.png";
+import superIdCover from "../../assets/images/Selected Works/Super_ID_Card_Maker.png";
+
 export interface Project {
   id: string;
   index: string;
@@ -48,7 +53,7 @@ export const projects: Project[] = [
     role: "Product Designer",
     platform: "Web",
     blurb: "A modern platform for managing and reading books.",
-    cover: "https://images.unsplash.com/photo-1762341119237-98df67c9c3c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1400",
+    cover: wtBooksCover,
     tags: ["Figma", "User Research", "Prototyping"],
     metrics: [{ label: "Screens", value: "20+" }, { label: "User Flows", value: "4" }, { label: "Success Rate", value: "98%" }],
     client: "Webtrendz Technologies",
@@ -87,7 +92,7 @@ export const projects: Project[] = [
     role: "Sole Product Designer",
     platform: "Mobile Application (iOS/Android)",
     blurb: "A mobile app that simulates paint colour mixing in real time — letting artists test ratios digitally before ever touching a brush.",
-    cover: "https://images.unsplash.com/photo-1581287053822-fd7bf4f4bfec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1400",
+    cover: gtColourMixerCover,
     tags: ["Figma", "Color Theory", "Prototyping"],
     metrics: [{ label: "Screens", value: "20+" }, { label: "User Flows", value: "4" }, { label: "Success Rate", value: "98%" }],
     client: "Agency Project",
@@ -132,7 +137,7 @@ export const projects: Project[] = [
     role: "Product Designer",
     platform: "Mobile Application (iOS/Android)",
     blurb: "On-Demand Grocery Delivery — Mobile Application for Dubai combining quick-commerce convenience with user-chosen delivery times.",
-    cover: "https://images.unsplash.com/photo-1782328479547-d4c0bb802143?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1400",
+    cover: xionCover,
     tags: ["Figma", "UX Research", "Prototyping"],
     metrics: [{ label: "Screens", value: "20+" }, { label: "User Flows", value: "4" }, { label: "Success Rate", value: "98%" }],
     client: "Agency Project",
@@ -177,7 +182,7 @@ export const projects: Project[] = [
     role: "Product Designer",
     platform: "Desktop Application (Windows)",
     blurb: "A desktop application for designing and mass-printing ID cards built to import large data sets directly from Excel and auto-populate thousands of individual cards from a single design.",
-    cover: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1400",
+    cover: superIdCover,
     tags: ["Figma"],
     metrics: [{ label: "Manual Data Entry", value: "0" }, { label: "Template Reusability", value: "100%" }, { label: "Pre-print Errors", value: "0" }],
     client: "Agency Project - Revamp",

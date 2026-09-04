@@ -2,11 +2,27 @@ import React from 'react';
 
 export type UIType = 'discovery' | 'detail' | 'catalog' | 'list' | 'add' | 'profile' | 'messages';
 
-interface PhoneMockupProps {
-  uiType: UIType;
+export interface PhoneMockupProps {
+  uiType?: UIType;
+  image?: string;
+  title?: string;
 }
 
-export function PhoneMockup({ uiType }: PhoneMockupProps) {
+export function PhoneMockup({ uiType = 'discovery', image, title }: PhoneMockupProps) {
+  if (image) {
+    return (
+      <div className="relative mx-auto w-full max-w-[260px] aspect-[1/2.1] bg-white rounded-[40px] border-[6px] border-[#E8E8E8] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)] overflow-hidden flex flex-col">
+        {/* Top Notch/Speaker */}
+        <div className="absolute top-0 inset-x-0 h-6 flex justify-center z-20 pointer-events-none">
+          <div className="w-1/3 h-full bg-[#E8E8E8] rounded-b-xl flex items-center justify-center">
+            <div className="w-1/2 h-1 rounded-full bg-[#D1D1D1]"></div>
+          </div>
+        </div>
+        <img src={image} alt={title || "LoFi Screen"} className="w-full h-full object-contain bg-[#FBFBFB] pt-4" />
+      </div>
+    );
+  }
+
   const renderUI = (type: UIType) => {
     switch (type) {
       case 'discovery':
