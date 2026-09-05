@@ -5,6 +5,7 @@ import { ArrowUpRight, MapPin } from "lucide-react";
 import { Reveal, WordReveal, Magnetic } from "../components/ui/motion-primitives";
 import { SketchGallery } from "../components/sections/ArtGallery";
 import { ImageWithFallback } from "../components/ui/ImageWithFallback";
+import aboutImg from "../../assets/images/aboutImage.png";
 
 /* ─── Data ───────────────────────────────────────────────────────────── */
 
@@ -183,8 +184,8 @@ export default function About() {
 
           <motion.div style={{ y: yImg }} className="overflow-hidden rounded-3xl bg-secondary">
             <ImageWithFallback
-              src="https://images.unsplash.com/photo-1768471126011-2e2002832826?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900"
-              alt="Lalithapriya K at her desk"
+              src={aboutImg}
+              alt="Lalithapriya K"
               className="h-[360px] w-full object-cover lg:h-[440px]"
             />
           </motion.div>

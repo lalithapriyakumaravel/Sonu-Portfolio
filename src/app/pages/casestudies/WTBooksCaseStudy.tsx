@@ -34,8 +34,8 @@ export function WTBooksCaseStudy({ project }: { project: Project }) {
   return (
     <div className="bg-[#F1ECE2] dark:bg-background w-full min-h-screen text-[#5E5E5E] dark:text-muted-foreground font-['Jost'] pb-32 pt-24">
       {/* 1. Hero Banner */}
-      <section className="px-4 sm:px-6 mx-auto max-w-[1880px] mb-20 sm:mb-28 md:mb-32">
-        <div className="relative w-full h-[480px] sm:h-[580px] md:h-[680px] lg:h-[760px] rounded-[24px] md:rounded-[36px] bg-[#070B14] border border-white/10 shadow-2xl flex flex-col items-center">
+      <section className="px-4 sm:px-6 mx-auto max-w-[1880px] mb-24 sm:mb-32 md:mb-40">
+        <div className="relative w-full h-[520px] sm:h-[620px] md:h-[720px] lg:h-[800px] xl:h-[840px] rounded-[24px] md:rounded-[36px] bg-[#070B14] border border-white/10 shadow-2xl flex flex-col items-center">
           {/* Ambient Glows */}
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-[24px] md:rounded-[36px]">
             <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] max-w-[900px] h-[450px] rounded-full bg-[#0A57E7]/25 blur-[120px] opacity-70" />
@@ -52,7 +52,7 @@ export function WTBooksCaseStudy({ project }: { project: Project }) {
           </Reveal>
 
           {/* Large Background Title (Behind Phone - iOS Wallpaper Depth Effect) */}
-          <div className="absolute top-[16%] sm:top-[18%] md:top-[20%] inset-x-0 text-center z-10 select-none pointer-events-none px-4">
+          <div className="absolute top-[15%] sm:top-[16%] md:top-[18%] inset-x-0 text-center z-10 select-none pointer-events-none px-4">
             <Reveal delay={0.15}>
               <h1 className="font-['Jost'] font-black text-[clamp(3.5rem,10.5vw,10.5rem)] leading-none uppercase text-white tracking-wider drop-shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
                 WT BOOKS
@@ -60,13 +60,13 @@ export function WTBooksCaseStudy({ project }: { project: Project }) {
             </Reveal>
           </div>
 
-          {/* Foreground Phone Overlay (Overlaying text like iOS lockscreen depth effect) */}
-          <div className="absolute top-[26%] sm:top-[24%] md:top-[22%] inset-x-0 z-20 flex justify-center pointer-events-none px-4">
+          {/* Foreground Phone Overlay (Overlaying text like iOS lockscreen depth effect with extended height) */}
+          <div className="absolute top-[23%] sm:top-[21%] md:top-[19%] inset-x-0 z-20 flex justify-center pointer-events-none px-4">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="w-full max-w-[520px] sm:max-w-[700px] md:max-w-[880px] lg:max-w-[1040px] flex justify-center"
+              className="w-full max-w-[580px] sm:max-w-[780px] md:max-w-[980px] lg:max-w-[1180px] xl:max-w-[1240px] flex justify-center"
             >
               <img 
                 src={bannerImg} 
@@ -495,14 +495,32 @@ export function WTBooksCaseStudy({ project }: { project: Project }) {
           </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {project.metrics?.map((metric, i) => (
-              <Reveal delay={i * 0.1} key={i}>
-                <div className="border-l-4 pl-6 py-2 border-[#CF4A25]">
-                  <div className="text-4xl font-bold mb-2 text-[#CF4A25]">{metric.value}</div>
-                  <div className="text-[18px] leading-[26px]">{metric.label} achieved post-launch.</div>
-                </div>
-              </Reveal>
-            ))}
+            <Reveal delay={0.1}>
+              <div className="bg-[#FAFCFF] dark:bg-card border-l-4 border-[#CF4A25] p-8 rounded-r-2xl shadow-sm h-full flex flex-col justify-start">
+                <span className="font-['Jost'] font-bold text-2xl text-[#CF4A25] mb-3">01</span>
+                <p className="font-['Jost'] text-[18px] leading-[28px] text-[#5E5E5E] dark:text-muted-foreground">
+                  <strong className="text-[#313131] dark:text-foreground font-semibold">Adopted ahead of schedule</strong> : though planned for a September launch, internal business admins began using WT Books mid-development, with positive early feedback on the core flows.
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <div className="bg-[#FAFCFF] dark:bg-card border-l-4 border-[#CF4A25] p-8 rounded-r-2xl shadow-sm h-full flex flex-col justify-start">
+                <span className="font-['Jost'] font-bold text-2xl text-[#CF4A25] mb-3">02</span>
+                <p className="font-['Jost'] text-[18px] leading-[28px] text-[#5E5E5E] dark:text-muted-foreground">
+                  <strong className="text-[#313131] dark:text-foreground font-semibold">Delivered the key differentiator intact</strong> : contact-linked transaction history, the single most-valued gap identified in competitor research, was built in as a core structure from day one, not bolted on later.
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.3}>
+              <div className="bg-[#FAFCFF] dark:bg-card border-l-4 border-[#CF4A25] p-8 rounded-r-2xl shadow-sm h-full flex flex-col justify-start">
+                <span className="font-['Jost'] font-bold text-2xl text-[#CF4A25] mb-3">03</span>
+                <p className="font-['Jost'] text-[18px] leading-[28px] text-[#5E5E5E] dark:text-muted-foreground">
+                  <strong className="text-[#313131] dark:text-foreground font-semibold">Scaled cleanly to 25+ screens</strong> : the early Business List → Business Detail hierarchy held up as the product grew, avoiding the structural inconsistency that often derails larger app builds.
+                </p>
+              </div>
+            </Reveal>
           </div>
         </section>
 
